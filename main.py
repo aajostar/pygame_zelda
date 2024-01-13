@@ -1,5 +1,7 @@
-import pygame, sys
+import pygame
+import sys
 from settings import *
+from level import Level
 
 
 class Game:
@@ -8,7 +10,10 @@ class Game:
         # general setup
         pygame.init()
         self.screen = pygame.display.set_mode((WIDTH, HEIGHT))
+        pygame.display.set_caption('Pygame Zelda')
         self.clock = pygame.time.Clock()
+
+        self.level = Level()
 
     def run(self):
         while True:
@@ -18,6 +23,7 @@ class Game:
                     sys.exit()
 
             self.screen.fill('black')
+            self.level.run()
             pygame.display.update()
             self.clock.tick(FPS)
 
